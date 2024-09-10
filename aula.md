@@ -5,3 +5,6 @@
 const = variável imutável
 let = variável mutável
 # Tudo o que é escrito entre {chaves} é considerado local e o que está fora é global
+
+ArrowFunction => atribuir uma variável como função. Ou usar function nome(){
+}
