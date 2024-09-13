@@ -1,5 +1,5 @@
 const { select, input, checkbox } = require('@inquirer/prompts')
-
+// Parei no 24:11 da aula 03
 let meta = {
    value: 'Fazer a ADO de Segurança',
    checked: false,
@@ -83,6 +83,31 @@ const cadastrarMeta = async () => {
    })
  }
 
+ const deletarMetas = async () => {
+   const metasDesmarcadas = metas.map((meta) => {
+      return {value: meta.value, checked: false}
+   })
+
+   const itemDeletar = await checkbox({
+   message: "Selecione uma meta para deletar",
+   choices: [...metasDesmarcadas],
+   instructions: false,
+  })
+
+  if(itemDeletar.length == 0){
+   console.log("Nenhum item para deletar!")
+   return
+  }
+
+  itemDeletar.forEach((item) => {
+   metas = metas.filter((meta) => {
+      return meta.value != item
+   })
+  })
+
+  console.log("Meta(s) deletada(s) com sucesso!")
+ }
+
 const start = async () => {
 
    while(true){
@@ -107,6 +132,10 @@ const start = async () => {
                value: "abertas"
             },
             {
+               name: "Deletar Metas",
+               value: "deletar"
+            },
+            {
                name: "Sair",
                value: "sair"
             }
@@ -129,6 +158,10 @@ const start = async () => {
 
          case "abertas":
             await metasAbertas()
+            break
+
+         case "deletar":
+            await deletarMetas()
             break
 
           case "sair":
