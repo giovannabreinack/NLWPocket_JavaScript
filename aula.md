@@ -8,3 +8,7 @@ let = variável mutável
 
 ArrowFunction => atribuir uma variável como função. Ou usar function nome(){
 }
+
+## JavaScript Object Notation ou JSON - é uma formatação utilizada para estruturar dados em formato de texto e transmitir de um sistema para outro, como client-server ou app móveis.
+
+fs = FileSystem
